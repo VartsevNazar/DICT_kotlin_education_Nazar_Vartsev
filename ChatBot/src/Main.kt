@@ -20,4 +20,26 @@ fun main() {
     println("Now I will prove to you that I can count to any number you want.")
     val number = readln().toInt()
     for (i in 0..number) println("$i!")
+    // User test
+    println("Let's test your programming knowledge.")
+    println("""
+            Why do we use methods?
+            1. To repeat a statement multiple times.
+            2. To decompose a program into several small subroutines.
+            3. To determine the execution time of a program.
+            4. To interrupt the execution of a program.
+        """.trimIndent())
+    while (true) {
+        val answer = readln()
+        if (answer == "2") {
+            println("""
+                Completed, have a nice day!
+                Congratulations, have a nice day!
+            """.trimIndent())
+            break
+        } else {
+            println("Please, try again.")
+        }
+    }
+
 }
