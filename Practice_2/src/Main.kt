@@ -1,6 +1,7 @@
 fun main() {
     // Stage 1, 2, 3
     var x: Int
+    var y: Int
 
     var number = readln().toInt()
     when {
@@ -32,4 +33,13 @@ fun main() {
     for (i in 0..<list1.count())
         listResult1.add(list1[i].toInt())
     println(listResult1.minOrNull())  // minimum value output
+    // Stage 6
+    val list2 = readln().split(' ')
+    val listResult2 = mutableListOf<Int>()
+    for (i in 0..<list2.count())
+        listResult2.add(list2[i].toInt())
+    x = listResult2.maxOrNull()!!
+    listResult2.remove(x)
+    y = listResult2.maxOrNull()!!
+    println("max1: $x, max2: $y")
 }
