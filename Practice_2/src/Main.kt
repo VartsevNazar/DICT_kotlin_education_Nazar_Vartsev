@@ -26,4 +26,10 @@ fun main() {
     } else {
         if (yearBirth == x * 100) println("${x * -1}st century BC") else println("${x * -1 + 1}st century BC")
     }
+    // Stage 5
+    val list1 = readln().split(' ')
+    val listResult1 = mutableListOf<Int>()
+    for (i in 0..<list1.count())
+        listResult1.add(list1[i].toInt())
+    println(listResult1.minOrNull())  // minimum value output
 }
