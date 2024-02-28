@@ -1,3 +1,5 @@
+import javax.lang.model.type.NullType
+
 fun main() {
     // Stage 1, 2, 3
     var x: Int
@@ -42,4 +44,24 @@ fun main() {
     listResult2.remove(x)
     y = listResult2.maxOrNull()!!
     println("max1: $x, max2: $y")
+    // Stage 7
+    val stringInput1 = readln()
+
+    if (stringInput1.isEmpty()) {
+        println(emptyList<NullType>())
+    } else {
+        val list3 = stringInput1.split(' ')
+        val listResult3 = mutableListOf<Int>()
+
+        x = 0
+        y = 0
+        for (i in 0..<list3.count())
+            listResult3.add(list3[i].toInt())
+        for (i in listResult3)
+            if (i > 0) x += 1 else {
+                if (i < 0) y += i
+            }
+        val listX = listOf<Int>(x, y)
+        println(listX)
+    }
 }
