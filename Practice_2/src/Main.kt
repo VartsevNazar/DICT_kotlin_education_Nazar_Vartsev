@@ -64,4 +64,12 @@ fun main() {
         val listX = listOf<Int>(x, y)
         println(listX)
     }
+    // Stage 8
+    val stringInput2 = readln()
+    val listVowels = "aeiouy".toList()
+
+    x = 0
+    for (i in stringInput2)
+        if (i in listVowels) x += 1
+    println("Vowels: $x")
 }
