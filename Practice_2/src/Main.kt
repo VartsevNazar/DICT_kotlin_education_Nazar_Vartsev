@@ -30,72 +30,73 @@ fun main() {
         if (yearBirth == x * 100) println("${x * -1}st century BC") else println("${x * -1 + 1}st century BC")
     }
     // Stage 5
-    val list1 = readln().split(' ')
-    val listResult1 = mutableListOf<Int>()
-    for (i in 0..<list1.count())
-        listResult1.add(list1[i].toInt())
-    println(listResult1.minOrNull())  // minimum value output
+    var list = readln().split(' ')
+    var listResult = mutableListOf<Int>()
+
+    for (i in 0..<list.count())
+        listResult.add(list[i].toInt())
+    println(listResult.minOrNull())  // minimum value output
     // Stage 6
-    val list2 = readln().split(' ')
-    val listResult2 = mutableListOf<Int>()
-    for (i in 0..<list2.count())
-        listResult2.add(list2[i].toInt())
-    x = listResult2.maxOrNull()!!
-    listResult2.remove(x)
-    y = listResult2.maxOrNull()!!
+    list = readln().split(' ')
+    listResult = mutableListOf<Int>()
+
+    for (i in 0..<list.count())
+        listResult.add(list[i].toInt())
+    x = listResult.maxOrNull()!!
+    listResult.remove(x)
+    y = listResult.maxOrNull()!!
     println("max1: $x, max2: $y")
     // Stage 7
-    val stringInput1 = readln()
+    var stringInput = readln()
 
-    if (stringInput1.isEmpty()) {
+    if (stringInput.isEmpty()) {
         println(emptyList<NullType>())
     } else {
-        val list3 = stringInput1.split(' ')
-        val listResult3 = mutableListOf<Int>()
+        list = stringInput.split(' ')
+        listResult = mutableListOf<Int>()
 
         x = 0
         y = 0
-        for (i in 0..<list3.count())
-            listResult3.add(list3[i].toInt())
-        for (i in listResult3)
+        for (i in 0..<list.count())
+            listResult.add(list[i].toInt())
+        for (i in listResult)
             if (i > 0) x += 1 else {
                 if (i < 0) y += i
             }
-        val listX = listOf<Int>(x, y)
-        println(listX)
+        println(listOf<Int>(x, y))
     }
     // Stage 8
-    val stringInput2 = readln()
+    stringInput = readln()
     val listVowels = "aeiouy".toList()
 
     x = 0
-    for (i in stringInput2)
+    for (i in stringInput)
         if (i in listVowels) x += 1
     println("Vowels: $x")
     // Stage 9
-    val stringInput3 = readln()
+    stringInput = readln()
 
-    if (stringInput3.isEmpty()) {
+    if (stringInput.isEmpty()) {
         println("")
     } else {
-        x = stringInput3.length / 2
-        if (stringInput3.length % 2 == 0) {
-            println("" + stringInput3[x - 1] + stringInput3[x])
+        x = stringInput.length / 2
+        if (stringInput.length % 2 == 0) {
+            println("" + stringInput[x - 1] + stringInput[x])
         } else {
-            println("" + stringInput3[x])
+            println("" + stringInput[x])
         }
     }
     // Stage 10
     println("Enter rows and columns separated by spaces to draw the multiplication table:")
-    val stringInput4 = readln()
+    stringInput = readln()
 
-    if (stringInput4.isEmpty() || " " !in stringInput4) println("") else {
-        val list3 = stringInput4.split(" ")
-        val listMultidimensional = MutableList(list3[0].toInt()) { mutableListOf(0) }
+    if (stringInput.isEmpty() || " " !in stringInput) println("") else {
+        list = stringInput.split(" ")
+        val listMultidimensional = MutableList(list[0].toInt()) { mutableListOf(0) }
 
-        for (i in 1..list3[0].toInt()) {
+        for (i in 1..list[0].toInt()) {
             listMultidimensional[i - 1].remove(0)  // remove 0 from rows
-            for (j in 1..list3[1].toInt()) {
+            for (j in 1..list[1].toInt()) {
                 listMultidimensional[i - 1].add(i * j)  // create a multiplication table
             }
         }
