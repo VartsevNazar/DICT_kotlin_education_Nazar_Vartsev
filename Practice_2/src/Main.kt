@@ -85,4 +85,23 @@ fun main() {
             println("" + stringInput3[x])
         }
     }
+    // Stage 10
+    println("Enter rows and columns separated by spaces to draw the multiplication table:")
+    val stringInput4 = readln()
+
+    if (stringInput4.isEmpty() || " " !in stringInput4) println("") else {
+        val list3 = stringInput4.split(" ")
+        val listMultidimensional = MutableList(list3[0].toInt()) { mutableListOf(0) }
+
+        for (i in 1..list3[0].toInt()) {
+            listMultidimensional[i - 1].remove(0)  // remove 0 from rows
+            for (j in 1..list3[1].toInt()) {
+                listMultidimensional[i - 1].add(i * j)  // create a multiplication table
+            }
+        }
+        for (i in listMultidimensional) {
+            println(i.joinToString(" "))
+        }
+
+    }
 }
