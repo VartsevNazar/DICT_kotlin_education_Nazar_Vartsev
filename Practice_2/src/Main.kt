@@ -72,4 +72,17 @@ fun main() {
     for (i in stringInput2)
         if (i in listVowels) x += 1
     println("Vowels: $x")
+    // Stage 9
+    val stringInput3 = readln()
+
+    if (stringInput3.isEmpty()) {
+        println("")
+    } else {
+        x = stringInput3.length / 2
+        if (stringInput3.length % 2 == 0) {
+            println("" + stringInput3[x - 1] + stringInput3[x])
+        } else {
+            println("" + stringInput3[x])
+        }
+    }
 }
