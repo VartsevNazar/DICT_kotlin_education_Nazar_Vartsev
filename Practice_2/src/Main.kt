@@ -38,7 +38,7 @@ fun main() {
     println(listResult.minOrNull())  // minimum value output
     // Stage 6
     list = readln().split(' ')
-    listResult = mutableListOf<Int>()
+    listResult = mutableListOf()
 
     for (i in 0..<list.count())
         listResult.add(list[i].toInt())
@@ -53,7 +53,7 @@ fun main() {
         println(emptyList<NullType>())
     } else {
         list = stringInput.split(' ')
-        listResult = mutableListOf<Int>()
+        listResult = mutableListOf()
 
         x = 0
         y = 0
@@ -63,7 +63,7 @@ fun main() {
             if (i > 0) x += 1 else {
                 if (i < 0) y += i
             }
-        println(listOf<Int>(x, y))
+        println(listOf(x, y))
     }
     // Stage 8
     stringInput = readln()
@@ -103,6 +103,5 @@ fun main() {
         for (i in listMultidimensional) {
             println(i.joinToString(" "))
         }
-
     }
 }
