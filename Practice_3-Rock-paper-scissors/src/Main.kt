@@ -7,4 +7,9 @@ fun printGreetings() {
 
 fun main(){
     printGreetings()
+    val gameRules = listOf("камінь", "ножиці", "папір")
+    while (true) {
+        val choosingAComputer = gameRules.random()
+        val userSelection = try { readln() } catch (e: NullPointerException) { continue }
+    }
 }
