@@ -7,10 +7,12 @@ fun exitProcessViaNull(string: String?) {
     }
 }
 
-fun convertingStringToIntLoop(string: String): Int {
+fun readAndConvertingLoop(): Int {
     while (true) {
+        val s = readlnOrNull()
+        exitProcessViaNull(s)
         try {
-            return string.toInt()
+            return s!!.toInt()
         }
         catch (e: NumberFormatException) {
             println("Must be a number\n")
@@ -49,20 +51,14 @@ fun statisticsCinema() {
 
 fun main() {
     println("Enter the number of rows:")
-    var n = readlnOrNull()
-    exitProcessViaNull(n)
-    val numberRows = convertingStringToIntLoop(n!!)
+    val numberRows = readAndConvertingLoop()
 
     println("Enter the number of seats in each row:")
-    n = readlnOrNull()
-    exitProcessViaNull(n)
-    val seatsInRow = convertingStringToIntLoop(n!!)
+    val seatsInRow = readAndConvertingLoop()
     val cinemaGrid = List(numberRows) { List(seatsInRow) { "S" } }
     while (true) {
         printMenu()
-        n = readlnOrNull()
-        exitProcessViaNull(n)
-        val userSelectionMenu = n
-        interactionProgram(userSelectionMenu!!, cinemaGrid)
+        val userSelectionMenu = readAndConvertingLoop()
+        interactionProgram(userSelectionMenu.toString(), cinemaGrid)
     }
 }
