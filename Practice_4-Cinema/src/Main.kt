@@ -7,18 +7,36 @@ fun exitProcessViaNull(string: String?) {
     }
 }
 
+fun convertingStringToIntLoop(string: String): Int {
+    while (true) {
+        try {
+            return string.toInt()
+        }
+        catch (e: NumberFormatException) {
+            println("Must be a number\n")
+        }
+    }
+}
+
+fun printMenu() {
+    println()
+    println("""
+        1. Show the seats
+        2. Buy a ticket
+        3. Statistics
+        0. Exit
+    """.trimIndent())
+}
+
 fun main() {
     println("Enter the number of rows:")
     var n = readlnOrNull()
     exitProcessViaNull(n)
-    val numberRows = try { n!!.toInt() } catch (e: NumberFormatException) {
-        println("Must be a number\n")
-    }
+    val numberRows = convertingStringToIntLoop(n!!)
 
     println("Enter the number of seats in each row:")
     n = readlnOrNull()
     exitProcessViaNull(n)
-    val seatsInRow = try { n!!.toInt() } catch (e: NumberFormatException) {
-        println("Must be a number\n")
-    }
+    val seatsInRow = convertingStringToIntLoop(n!!)
+    val cinemaGrid = List(numberRows) { List(seatsInRow) { "S" } }
 }
