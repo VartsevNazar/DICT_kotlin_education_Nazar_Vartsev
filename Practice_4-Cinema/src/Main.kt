@@ -28,6 +28,25 @@ fun printMenu() {
     """.trimIndent())
 }
 
+fun interactionProgram(choice: String, cinemaGridX: List<List<String>>) {
+    when (choice) {
+        "1" -> for (i in cinemaGridX) println("\n${i.joinToString()}")
+//        "2" ->
+        "3" -> statisticsCinema()
+        "0" -> exitProcess(0)
+    }
+}
+
+fun statisticsCinema() {
+    println()
+    println("""
+        Number of purchased tickets: 0
+        Percentage: 0.00%
+        Current income: ${'$'}0
+        Total income: ${'$'}360
+    """.trimIndent())
+}
+
 fun main() {
     println("Enter the number of rows:")
     var n = readlnOrNull()
@@ -39,4 +58,11 @@ fun main() {
     exitProcessViaNull(n)
     val seatsInRow = convertingStringToIntLoop(n!!)
     val cinemaGrid = List(numberRows) { List(seatsInRow) { "S" } }
+    while (true) {
+        printMenu()
+        n = readlnOrNull()
+        exitProcessViaNull(n)
+        val userSelectionMenu = n
+        interactionProgram(userSelectionMenu!!, cinemaGrid)
+    }
 }
