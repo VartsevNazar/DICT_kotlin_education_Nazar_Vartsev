@@ -39,6 +39,23 @@ fun interactionProgram(choice: String, cinemaGridX: List<List<String>>) {
     }
 }
 
+//fun buyTicket(cinemaGridX: List<List<String>>) {
+//    val boolX = false
+//    println()
+//    val rowX = readAndConvertingLoop()
+//    println()
+//    val seatX = readAndConvertingLoop()
+//    do {
+//        try {
+//            when {
+//                cinemaGridX[rowX][seatX] != "S" -> {
+//                    cinemaGridX[rowX][seatX] = "B"
+//                }
+//            }
+//        }
+//    } while (boolX)
+//}
+
 fun statisticsCinema() {
     println()
     println("""
@@ -55,7 +72,7 @@ fun main() {
 
     println("Enter the number of seats in each row:")
     val seatsInRow = readAndConvertingLoop()
-    val cinemaGrid = List(numberRows) { List(seatsInRow) { "S" } }
+    val cinemaGrid = List(numberRows) { MutableList(seatsInRow) { "S" } }
     while (true) {
         printMenu()
         val userSelectionMenu = readAndConvertingLoop()
