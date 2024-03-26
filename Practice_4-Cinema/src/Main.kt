@@ -30,31 +30,40 @@ fun printMenu() {
     """.trimIndent())
 }
 
-fun interactionProgram(choice: String, cinemaGridX: List<List<String>>) {
+fun interactionProgram(choice: String, cinemaGridX: List<MutableList<String>>) {
     when (choice) {
         "1" -> for (i in cinemaGridX) println("\n${i.joinToString()}")
-//        "2" ->
+        "2" -> buyTicket(cinemaGridX)
         "3" -> statisticsCinema()
         "0" -> exitProcess(0)
     }
 }
 
-//fun buyTicket(cinemaGridX: List<List<String>>) {
-//    val boolX = false
-//    println()
-//    val rowX = readAndConvertingLoop()
-//    println()
-//    val seatX = readAndConvertingLoop()
-//    do {
-//        try {
-//            when {
-//                cinemaGridX[rowX][seatX] != "S" -> {
-//                    cinemaGridX[rowX][seatX] = "B"
-//                }
-//            }
-//        }
-//    } while (boolX)
-//}
+fun buyTicket(cinemaGridX: List<MutableList<String>>) {
+    var boolX: Boolean
+    do {
+        try {
+            boolX = false
+            println("\nEnter a row number:")
+            val rowX = readAndConvertingLoop()
+            println("Enter a seat number in that row:")
+            val seatX = readAndConvertingLoop()
+            when {
+                cinemaGridX[rowX][seatX] == "S" -> cinemaGridX[rowX][seatX] = "B"
+                cinemaGridX[rowX][seatX] == "B" -> {
+                    println("\nThat ticket has already been purchased!")
+                    println("Enter another location")
+                    boolX = true
+                }
+            }
+        }
+        catch (e: IndexOutOfBoundsException) {
+            println("\nWrong input!")
+            println("Enter another location")
+            boolX = true
+        }
+    } while (boolX)
+}
 
 fun statisticsCinema() {
     println()
