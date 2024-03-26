@@ -82,6 +82,10 @@ fun main() {
     println("Enter the number of seats in each row:")
     val seatsInRow = readAndConvertingLoop()
     val cinemaGrid = List(numberRows) { MutableList(seatsInRow) { "S" } }
+    val purchasedTickets = 0
+    val percentage = 0
+    val currentIncome = 0
+    val totalIncome = 360
     while (true) {
         printMenu()
         val userSelectionMenu = readAndConvertingLoop()
