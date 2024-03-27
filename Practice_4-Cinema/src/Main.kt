@@ -49,7 +49,13 @@ fun buyTicket(cinemaGridX: List<MutableList<String>>) {
             println("Enter a seat number in that row:")
             val seatX = readAndConvertingLoop()
             when {
-                cinemaGridX[rowX][seatX] == "S" -> cinemaGridX[rowX][seatX] = "B"
+                cinemaGridX[rowX][seatX] == "S" -> {
+                    cinemaGridX[rowX][seatX] = "B"
+                    purchasedTickets += 1
+                    percentage = 100.0 / numberSeats * purchasedTickets
+                    currentIncome += 10
+                    println("Ticket price: \$10")
+                }
                 cinemaGridX[rowX][seatX] == "B" -> {
                     println("\nThat ticket has already been purchased!")
                     println("Enter another location")
@@ -68,12 +74,18 @@ fun buyTicket(cinemaGridX: List<MutableList<String>>) {
 fun statisticsCinema() {
     println()
     println("""
-        Number of purchased tickets: 0
-        Percentage: 0.00%
-        Current income: ${'$'}0
-        Total income: ${'$'}360
+        Number of purchased tickets: $purchasedTickets
+        Percentage: $percentage%
+        Current income: ${'$'}$currentIncome
+        Total income: ${'$'}$totalIncome
     """.trimIndent())
 }
+
+private var purchasedTickets = 0
+private var percentage = 0.0
+private var currentIncome = 0
+private var totalIncome = 0
+private var numberSeats = 0
 
 fun main() {
     println("Enter the number of rows:")
@@ -82,10 +94,8 @@ fun main() {
     println("Enter the number of seats in each row:")
     val seatsInRow = readAndConvertingLoop()
     val cinemaGrid = List(numberRows) { MutableList(seatsInRow) { "S" } }
-    val purchasedTickets = 0
-    val percentage = 0
-    val currentIncome = 0
-    val totalIncome = 360
+    numberSeats = numberRows * seatsInRow
+    totalIncome = numberRows * seatsInRow * 10
     while (true) {
         printMenu()
         val userSelectionMenu = readAndConvertingLoop()
