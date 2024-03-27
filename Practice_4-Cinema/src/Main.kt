@@ -74,14 +74,14 @@ fun buyTicket(cinemaGridX: List<MutableList<String>>) {
             println("Enter a seat number in that row:")
             val seatX = readAndConvertingLoop()
             when {
-                cinemaGridX[rowX][seatX] == "S" -> {
-                    cinemaGridX[rowX][seatX] = "B"
+                cinemaGridX[rowX - 1][seatX - 1] == "S" -> {
+                    cinemaGridX[rowX - 1][seatX - 1] = "B"
                     purchasedTickets += 1
                     percentage = 100.0 / numberSeats * purchasedTickets
                     currentIncome += 10
                     println("\nTicket price: \$10")
                 }
-                cinemaGridX[rowX][seatX] == "B" -> {
+                cinemaGridX[rowX - 1][seatX - 1] == "B" -> {
                     println("\nThat ticket has already been purchased!")
                     println("Enter another location")
                     boolX = true
