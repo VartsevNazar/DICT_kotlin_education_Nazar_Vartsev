@@ -30,13 +30,38 @@ fun printMenu() {
     """.trimIndent())
 }
 
-fun interactionProgram(choice: String, cinemaGridX: List<MutableList<String>>) {
-    when (choice) {
-        "1" -> for (i in cinemaGridX) println("\n${i.joinToString()}")
-        "2" -> buyTicket(cinemaGridX)
-        "3" -> statisticsCinema()
-        "0" -> exitProcess(0)
+fun printCinemaGrid(cinemaGridX: List<MutableList<String>>) {
+    println("\nCinema:")
+    var s = " "
+    var x = 1
+    for (i in cinemaGridX) {
+        s += " $x"
+        x += 1
     }
+    println(s)
+    x = 1
+    for (i in cinemaGridX) {
+        println("$x ${i.joinToString(" ")}")
+        x += 1
+    }
+}
+
+fun interactionProgram(cinemaGridX: List<MutableList<String>>) {
+    var boolX: Boolean
+    do {
+        boolX = false
+        val choice = readAndConvertingLoop()
+        when (choice.toString()) {
+            "1" -> printCinemaGrid(cinemaGridX)
+            "2" -> buyTicket(cinemaGridX)
+            "3" -> statisticsCinema()
+            "0" -> exitProcess(0)
+            else -> {
+                println("\nEnter the menu item number:")
+                boolX = true
+            }
+        }
+    } while (boolX)
 }
 
 fun buyTicket(cinemaGridX: List<MutableList<String>>) {
@@ -54,7 +79,7 @@ fun buyTicket(cinemaGridX: List<MutableList<String>>) {
                     purchasedTickets += 1
                     percentage = 100.0 / numberSeats * purchasedTickets
                     currentIncome += 10
-                    println("Ticket price: \$10")
+                    println("\nTicket price: \$10")
                 }
                 cinemaGridX[rowX][seatX] == "B" -> {
                     println("\nThat ticket has already been purchased!")
@@ -75,7 +100,7 @@ fun statisticsCinema() {
     println()
     println("""
         Number of purchased tickets: $purchasedTickets
-        Percentage: $percentage%
+        Percentage: ${"%.2f".format(percentage)}%
         Current income: ${'$'}$currentIncome
         Total income: ${'$'}$totalIncome
     """.trimIndent())
@@ -98,7 +123,6 @@ fun main() {
     totalIncome = numberRows * seatsInRow * 10
     while (true) {
         printMenu()
-        val userSelectionMenu = readAndConvertingLoop()
-        interactionProgram(userSelectionMenu.toString(), cinemaGrid)
+        interactionProgram(cinemaGrid)
     }
 }
