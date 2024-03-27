@@ -115,7 +115,6 @@ private var numberSeats = 0
 fun main() {
     println("Enter the number of rows:")
     val numberRows = readAndConvertingLoop()
-
     println("Enter the number of seats in each row:")
     val seatsInRow = readAndConvertingLoop()
     val cinemaGrid = List(numberRows) { MutableList(seatsInRow) { "S" } }
